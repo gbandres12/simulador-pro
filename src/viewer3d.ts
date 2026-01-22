@@ -169,13 +169,13 @@ function createPorticoStructure(data: ProjectData) {
     const alturaOitao = altura + (vao * inclinacao / 200)
     const numPorticos = Math.floor(comprimento / 5) + 1 // pórtico a cada 5m
 
-    // Material para colunas e vigas
+    // Material para colunas e vigas (Orange Theme)
     const steelMaterial = new THREE.MeshStandardMaterial({
-        color: 0x3b82f6,
-        roughness: 0.4,
-        metalness: 0.8,
-        emissive: 0x1e3a8a,
-        emissiveIntensity: 0.1
+        color: 0xf97316, // primary-500
+        roughness: 0.3,
+        metalness: 0.9,
+        emissive: 0x7c2d12, // darker orange
+        emissiveIntensity: 0.05
     })
 
     for (let i = 0; i < numPorticos; i++) {
@@ -228,11 +228,11 @@ function createTrelicadoStructure(data: ProjectData) {
     const numTrelicas = Math.floor(comprimento / 6) + 1
 
     const steelMaterial = new THREE.MeshStandardMaterial({
-        color: 0xf97316,
+        color: 0xfb923c, // primary-400
         roughness: 0.5,
         metalness: 0.7,
         emissive: 0x9a3412,
-        emissiveIntensity: 0.1
+        emissiveIntensity: 0.05
     })
 
     for (let i = 0; i < numTrelicas; i++) {

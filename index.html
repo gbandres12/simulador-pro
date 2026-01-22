@@ -1,304 +1,348 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="SaaS profissional para cálculo de estruturas metálicas - Geração de orçamentos, visualização 3D e exportação de propostas em PDF" />
-    <title>Engenheiro de Bolso - Estruturas Metálicas Pro</title>
-  </head>
-  <body>
-    <div id="app">
-      <!-- Hero Section -->
-      <section class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <h1>Engenheiro de Bolso</h1>
-            <p>Calcule pesos, gere orçamentos detalhados e visualize estruturas metálicas em 3D com precisão profissional</p>
-            
-            <div class="hero-stats">
-              <div class="stat-card">
-                <span class="stat-value">32+</span>
-                <span class="stat-label">Combinações de Galpões</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="SaaS profissional para cálculo de estruturas metálicas - Geração de orçamentos, visualização 3D e exportação de propostas em PDF" />
+  <title>Engenheiro de Bolso - Estruturas Metálicas Pro</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Premium Navbar -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">E</div>
+          <span>Engenheiro de Bolso <span class="badge">PRO</span></span>
+        </div>
+        <div class="nav-links">
+          <a href="#" class="active">Simulador</a>
+          <a href="#">Projetos</a>
+          <a href="#">Orçamentos</a>
+          <div class="user-profile">
+            <div class="avatar">GA</div>
+            <span>Gabriel Lima</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Simulador Pro de <span class="text-orange">Estruturas Metálicas</span></h1>
+          <p>A solução definitiva para engenheiros que buscam precisão, velocidade e profissionalismo na ponta dos
+            dedos.</p>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-value">32+</span>
+              <span class="stat-label">Combinações de Galpões</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">3D</span>
+              <span class="stat-label">Visualização em Tempo Real</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">PDF</span>
+              <span class="stat-label">Propostas Profissionais</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wizard Section -->
+    <section class="wizard-section">
+      <div class="container">
+        <div class="wizard-container">
+          <!-- Wizard Header with Steps -->
+          <div class="wizard-header">
+            <div class="wizard-steps">
+              <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <span class="step-label">Dimensões</span>
               </div>
-              <div class="stat-card">
-                <span class="stat-value">3D</span>
-                <span class="stat-label">Visualização em Tempo Real</span>
+              <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <span class="step-label">Tipologia</span>
               </div>
-              <div class="stat-card">
-                <span class="stat-value">PDF</span>
-                <span class="stat-label">Propostas Profissionais</span>
+              <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+                <span class="step-label">Detalhes</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wizard Content -->
+          <div class="wizard-content">
+            <!-- Step 1: Dimensões -->
+            <div class="wizard-panel active" id="panel-1">
+              <h2 class="mb-lg">Insira as Dimensões da Estrutura</h2>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="vao">Vão (m)</label>
+                  <input type="number" id="vao" name="vao" min="5" max="50" step="0.1" required placeholder="Ex: 20.0">
+                  <span class="error-message">Por favor, insira um vão válido (5-50m)</span>
+                </div>
+                <div class="form-group">
+                  <label for="comprimento">Comprimento (m)</label>
+                  <input type="number" id="comprimento" name="comprimento" min="10" max="100" step="0.1" required
+                    placeholder="Ex: 40.0">
+                  <span class="error-message">Por favor, insira um comprimento válido (10-100m)</span>
+                </div>
+                <div class="form-group">
+                  <label for="altura">Altura do Pé Direito (m)</label>
+                  <input type="number" id="altura" name="altura" min="3" max="20" step="0.1" required
+                    placeholder="Ex: 6.0">
+                  <span class="error-message">Por favor, insira uma altura válida (3-20m)</span>
+                </div>
+                <div class="form-group">
+                  <label for="inclinacao">Inclinação do Telhado (%)</label>
+                  <input type="number" id="inclinacao" name="inclinacao" min="5" max="30" step="1" value="10" required
+                    placeholder="Ex: 10">
+                  <span class="error-message">Por favor, insira uma inclinação válida (5-30%)</span>
+                </div>
+              </div>
+              <div class="button-group">
+                <button class="btn btn-primary" id="btn-step1-next">
+                  Próximo
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Tipologia -->
+            <div class="wizard-panel" id="panel-2">
+              <h2 class="mb-lg">Selecione a Tipologia Estrutural</h2>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="tipologia">Tipo de Estrutura</label>
+                  <select id="tipologia" name="tipologia" required>
+                    <option value="">Selecione...</option>
+                    <option value="portico">Pórtico Alma Cheia</option>
+                    <option value="trelicado">Galpão Treliçado</option>
+                  </select>
+                  <span class="error-message">Por favor, selecione uma tipologia</span>
+                </div>
+                <div class="form-group">
+                  <label for="sobrecarga">Sobrecarga (kg/m²)</label>
+                  <select id="sobrecarga" name="sobrecarga" required>
+                    <option value="">Selecione...</option>
+                    <option value="50">50 kg/m² - Uso leve</option>
+                    <option value="75">75 kg/m² - Uso médio</option>
+                    <option value="100">100 kg/m² - Uso pesado</option>
+                  </select>
+                  <span class="error-message">Por favor, selecione a sobrecarga</span>
+                </div>
+                <div class="form-group">
+                  <label for="fechamento">Fechamento Lateral</label>
+                  <select id="fechamento" name="fechamento" required>
+                    <option value="">Selecione...</option>
+                    <option value="completo">Completo (4 lados)</option>
+                    <option value="parcial">Parcial (2 lados)</option>
+                    <option value="aberto">Aberto</option>
+                  </select>
+                  <span class="error-message">Por favor, selecione o fechamento</span>
+                </div>
+                <div class="form-group">
+                  <label for="regiao">Região (NBR 6123)</label>
+                  <select id="regiao" name="regiao" required>
+                    <option value="">Selecione...</option>
+                    <option value="1">Região 1 - Vento 30 m/s</option>
+                    <option value="2">Região 2 - Vento 35 m/s</option>
+                    <option value="3">Região 3 - Vento 40 m/s</option>
+                    <option value="4">Região 4 - Vento 45 m/s</option>
+                  </select>
+                  <span class="error-message">Por favor, selecione a região</span>
+                </div>
+              </div>
+              <div class="button-group">
+                <button class="btn btn-secondary" id="btn-step2-prev">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  Voltar
+                </button>
+                <button class="btn btn-primary" id="btn-step2-next">
+                  Próximo
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Detalhes -->
+            <div class="wizard-panel" id="panel-3">
+              <h2 class="mb-lg">Informações do Cliente e Orçamento</h2>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="empresa">Empresa</label>
+                  <input type="text" id="empresa" name="empresa" value="Almeida Engenharia" required
+                    placeholder="Nome da empresa">
+                  <span class="error-message">Por favor, insira o nome da empresa</span>
+                </div>
+                <div class="form-group">
+                  <label for="cliente">Cliente</label>
+                  <input type="text" id="cliente" name="cliente" required placeholder="Nome do cliente">
+                  <span class="error-message">Por favor, insira o nome do cliente</span>
+                </div>
+                <div class="form-group">
+                  <label for="custo-aco">Custo do Aço (R$/kg)</label>
+                  <input type="number" id="custo-aco" name="custo-aco" min="5" max="50" step="0.1" value="12.5" required
+                    placeholder="Ex: 12.50">
+                  <span class="error-message">Por favor, insira um custo válido</span>
+                </div>
+                <div class="form-group">
+                  <label for="margem">Margem de Lucro (%)</label>
+                  <input type="number" id="margem" name="margem" min="0" max="100" step="1" value="30" required
+                    placeholder="Ex: 30">
+                  <span class="error-message">Por favor, insira uma margem válida</span>
+                </div>
+              </div>
+              <div class="button-group">
+                <button class="btn btn-secondary" id="btn-step3-prev">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  Voltar
+                </button>
+                <button class="btn btn-primary" id="btn-calcular">
+                  Calcular
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Wizard Section -->
-      <section class="wizard-section">
-        <div class="container">
-          <div class="wizard-container">
-            <!-- Wizard Header with Steps -->
-            <div class="wizard-header">
-              <div class="wizard-steps">
-                <div class="step active" data-step="1">
-                  <div class="step-circle">1</div>
-                  <span class="step-label">Dimensões</span>
-                </div>
-                <div class="step" data-step="2">
-                  <div class="step-circle">2</div>
-                  <span class="step-label">Tipologia</span>
-                </div>
-                <div class="step" data-step="3">
-                  <div class="step-circle">3</div>
-                  <span class="step-label">Detalhes</span>
-                </div>
-              </div>
-            </div>
+    <!-- Results Section -->
+    <section class="results-section" id="results-section">
+      <div class="container">
+        <h2 class="text-center mb-lg" style="font-family: var(--font-display); font-size: 2.5rem;">Resultados do Projeto
+        </h2>
 
-            <!-- Wizard Content -->
-            <div class="wizard-content">
-              <!-- Step 1: Dimensões -->
-              <div class="wizard-panel active" id="panel-1">
-                <h2 class="mb-lg">Insira as Dimensões da Estrutura</h2>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="vao">Vão (m)</label>
-                    <input type="number" id="vao" name="vao" min="5" max="50" step="0.1" required placeholder="Ex: 20.0">
-                    <span class="error-message">Por favor, insira um vão válido (5-50m)</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="comprimento">Comprimento (m)</label>
-                    <input type="number" id="comprimento" name="comprimento" min="10" max="100" step="0.1" required placeholder="Ex: 40.0">
-                    <span class="error-message">Por favor, insira um comprimento válido (10-100m)</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="altura">Altura do Pé Direito (m)</label>
-                    <input type="number" id="altura" name="altura" min="3" max="20" step="0.1" required placeholder="Ex: 6.0">
-                    <span class="error-message">Por favor, insira uma altura válida (3-20m)</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="inclinacao">Inclinação do Telhado (%)</label>
-                    <input type="number" id="inclinacao" name="inclinacao" min="5" max="30" step="1" value="10" required placeholder="Ex: 10">
-                    <span class="error-message">Por favor, insira uma inclinação válida (5-30%)</span>
-                  </div>
-                </div>
-                <div class="button-group">
-                  <button class="btn btn-primary" id="btn-step1-next">
-                    Próximo
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Step 2: Tipologia -->
-              <div class="wizard-panel" id="panel-2">
-                <h2 class="mb-lg">Selecione a Tipologia Estrutural</h2>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="tipologia">Tipo de Estrutura</label>
-                    <select id="tipologia" name="tipologia" required>
-                      <option value="">Selecione...</option>
-                      <option value="portico">Pórtico Alma Cheia</option>
-                      <option value="trelicado">Galpão Treliçado</option>
-                    </select>
-                    <span class="error-message">Por favor, selecione uma tipologia</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="sobrecarga">Sobrecarga (kg/m²)</label>
-                    <select id="sobrecarga" name="sobrecarga" required>
-                      <option value="">Selecione...</option>
-                      <option value="50">50 kg/m² - Uso leve</option>
-                      <option value="75">75 kg/m² - Uso médio</option>
-                      <option value="100">100 kg/m² - Uso pesado</option>
-                    </select>
-                    <span class="error-message">Por favor, selecione a sobrecarga</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="fechamento">Fechamento Lateral</label>
-                    <select id="fechamento" name="fechamento" required>
-                      <option value="">Selecione...</option>
-                      <option value="completo">Completo (4 lados)</option>
-                      <option value="parcial">Parcial (2 lados)</option>
-                      <option value="aberto">Aberto</option>
-                    </select>
-                    <span class="error-message">Por favor, selecione o fechamento</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="regiao">Região (NBR 6123)</label>
-                    <select id="regiao" name="regiao" required>
-                      <option value="">Selecione...</option>
-                      <option value="1">Região 1 - Vento 30 m/s</option>
-                      <option value="2">Região 2 - Vento 35 m/s</option>
-                      <option value="3">Região 3 - Vento 40 m/s</option>
-                      <option value="4">Região 4 - Vento 45 m/s</option>
-                    </select>
-                    <span class="error-message">Por favor, selecione a região</span>
-                  </div>
-                </div>
-                <div class="button-group">
-                  <button class="btn btn-secondary" id="btn-step2-prev">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Voltar
-                  </button>
-                  <button class="btn btn-primary" id="btn-step2-next">
-                    Próximo
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Step 3: Detalhes -->
-              <div class="wizard-panel" id="panel-3">
-                <h2 class="mb-lg">Informações do Cliente e Orçamento</h2>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="empresa">Empresa</label>
-                    <input type="text" id="empresa" name="empresa" value="Almeida Engenharia" required placeholder="Nome da empresa">
-                    <span class="error-message">Por favor, insira o nome da empresa</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="cliente">Cliente</label>
-                    <input type="text" id="cliente" name="cliente" required placeholder="Nome do cliente">
-                    <span class="error-message">Por favor, insira o nome do cliente</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="custo-aco">Custo do Aço (R$/kg)</label>
-                    <input type="number" id="custo-aco" name="custo-aco" min="5" max="50" step="0.1" value="12.5" required placeholder="Ex: 12.50">
-                    <span class="error-message">Por favor, insira um custo válido</span>
-                  </div>
-                  <div class="form-group">
-                    <label for="margem">Margem de Lucro (%)</label>
-                    <input type="number" id="margem" name="margem" min="0" max="100" step="1" value="30" required placeholder="Ex: 30">
-                    <span class="error-message">Por favor, insira uma margem válida</span>
-                  </div>
-                </div>
-                <div class="button-group">
-                  <button class="btn btn-secondary" id="btn-step3-prev">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Voltar
-                  </button>
-                  <button class="btn btn-primary" id="btn-calcular">
-                    Calcular
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Results Section -->
-      <section class="results-section" id="results-section">
-        <div class="container">
-          <h2 class="text-center mb-lg" style="font-family: var(--font-display); font-size: 2.5rem;">Resultados do Projeto</h2>
-          
-          <div class="results-grid">
-            <!-- Numerical Results -->
-            <div class="results-card">
-              <h3>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Dados Técnicos
-              </h3>
-              <table class="results-table">
-                <tr>
-                  <td>Peso Total da Estrutura</td>
-                  <td id="result-peso-total">-</td>
-                </tr>
-                <tr>
-                  <td>Peso por m²</td>
-                  <td id="result-peso-m2">-</td>
-                </tr>
-                <tr>
-                  <td>Área Total</td>
-                  <td id="result-area">-</td>
-                </tr>
-                <tr>
-                  <td>Volume</td>
-                  <td id="result-volume">-</td>
-                </tr>
-              </table>
-            </div>
-
-            <!-- Financial Results -->
-            <div class="results-card">
-              <h3>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Orçamento
-              </h3>
-              <table class="results-table">
-                <tr>
-                  <td>Custo de Material</td>
-                  <td id="result-custo-material">-</td>
-                </tr>
-                <tr>
-                  <td>Custo de Montagem</td>
-                  <td id="result-custo-montagem">-</td>
-                </tr>
-                <tr>
-                  <td>Margem de Lucro</td>
-                  <td id="result-margem">-</td>
-                </tr>
-                <tr>
-                  <td><strong>Valor Total</strong></td>
-                  <td id="result-valor-total" style="font-size: 1.5rem; color: var(--accent-500);">-</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-
-          <!-- 3D Viewer -->
-          <div class="results-card mt-lg">
+        <div class="results-grid">
+          <!-- Numerical Results -->
+          <div class="results-card">
             <h3>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Prévia 3D da Estrutura
+              Dados Técnicos
             </h3>
-            <div class="viewer-3d">
-              <canvas id="canvas-3d"></canvas>
-              <div class="viewer-controls">
-                <button id="btn-rotate" title="Auto-rotação">🔄</button>
-                <button id="btn-reset-view" title="Resetar visualização">⟲</button>
-                <button id="btn-wireframe" title="Alternar wireframe">◻</button>
-              </div>
-            </div>
+            <table class="results-table">
+              <tr>
+                <td>Peso Total da Estrutura</td>
+                <td id="result-peso-total">-</td>
+              </tr>
+              <tr>
+                <td>Peso por m²</td>
+                <td id="result-peso-m2">-</td>
+              </tr>
+              <tr>
+                <td>Área Total</td>
+                <td id="result-area">-</td>
+              </tr>
+              <tr>
+                <td>Volume</td>
+                <td id="result-volume">-</td>
+              </tr>
+            </table>
           </div>
 
-          <!-- Action Buttons -->
-          <div class="button-group mt-lg" style="justify-content: center;">
-            <button class="btn btn-accent" id="btn-download-pdf">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M7 10l3 3m0 0l3-3m-3 3V3m-6 9v5a2 2 0 002 2h10a2 2 0 002-2v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Financial Results -->
+          <div class="results-card">
+            <h3>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              Baixar Proposta em PDF
-            </button>
-            <button class="btn btn-secondary" id="btn-new-project">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M10 5v10m-5-5h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Novo Projeto
-            </button>
+              Orçamento
+            </h3>
+            <table class="results-table">
+              <tr>
+                <td>Custo de Material</td>
+                <td id="result-custo-material">-</td>
+              </tr>
+              <tr>
+                <td>Custo de Montagem</td>
+                <td id="result-custo-montagem">-</td>
+              </tr>
+              <tr>
+                <td>Margem de Lucro</td>
+                <td id="result-margem">-</td>
+              </tr>
+              <tr>
+                <td><strong>Valor Total</strong></td>
+                <td id="result-valor-total" style="font-size: 1.5rem; color: var(--accent-500);">-</td>
+              </tr>
+            </table>
           </div>
         </div>
-      </section>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+        <!-- 3D Viewer -->
+        <div class="results-card mt-lg">
+          <h3>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Prévia 3D da Estrutura
+          </h3>
+          <div class="viewer-3d">
+            <canvas id="canvas-3d"></canvas>
+            <div class="viewer-controls">
+              <button id="btn-rotate" title="Auto-rotação">🔄</button>
+              <button id="btn-reset-view" title="Resetar visualização">⟲</button>
+              <button id="btn-wireframe" title="Alternar wireframe">◻</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-group mt-lg" style="justify-content: center;">
+          <button class="btn btn-accent" id="btn-download-pdf">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 10l3 3m0 0l3-3m-3 3V3m-6 9v5a2 2 0 002 2h10a2 2 0 002-2v-5" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Baixar Proposta em PDF
+          </button>
+          <button class="btn btn-secondary" id="btn-new-project">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 5v10m-5-5h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Novo Projeto
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
