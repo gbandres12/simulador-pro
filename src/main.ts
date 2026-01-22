@@ -1,5 +1,5 @@
 import './style.css'
-import { initViewer3D, updateStructure3D } from './viewer3d'
+import { initViewer3D, updateStructure3D, onWindowResize } from './viewer3d'
 import { calculateStructure } from './calculations'
 
 // ===================================
@@ -184,6 +184,11 @@ function performCalculations() {
 
   // Show results section
   document.getElementById('results-section')?.classList.add('active')
+
+  // Trigger 3D resize since the container was formerly display:none
+  setTimeout(() => {
+    onWindowResize()
+  }, 100)
 
   // Scroll to results
   document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' })

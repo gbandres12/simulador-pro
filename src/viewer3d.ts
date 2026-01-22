@@ -15,6 +15,7 @@ interface ProjectData {
     fechamento: 'completo' | 'parcial' | 'aberto' | ''
 }
 
+// State variables
 let scene: THREE.Scene
 let camera: THREE.PerspectiveCamera
 let renderer: THREE.WebGLRenderer
@@ -23,21 +24,20 @@ let structureGroup: THREE.Group
 let autoRotate = false
 let wireframeMode = false
 
-const canvas = document.getElementById('canvas-3d') as HTMLCanvasElement
-
 /**
  * Inicializa a cena 3D
  */
 export function initViewer3D() {
+    const canvas = document.getElementById('canvas-3d') as HTMLCanvasElement
     if (!canvas) {
-        console.warn('Canvas 3D não encontrado')
+        console.warn('Canvas 3D não encontrado na inicialização')
         return
     }
 
     // Scene setup
     scene = new THREE.Scene()
-    scene.background = new THREE.Color(0x1a1a2e)
-    scene.fog = new THREE.Fog(0x1a1a2e, 50, 200)
+    scene.background = new THREE.Color(0x0f172a) // Darker background to match theme
+    scene.fog = new THREE.Fog(0x0f172a, 50, 200)
 
     // Camera setup
     const aspect = canvas.clientWidth / canvas.clientHeight
@@ -469,18 +469,19 @@ function setupViewerControls() {
 }
 
 /**
- * Handle window resize
+ * Handle window resize and manual triggers
  */
-function onWindowResize() {
+export function onWindowResize() {
+    const canvas = document.getElementById('canvas-3d') as HTMLCanvasElement
     if (!canvas || !camera || !renderer) return
 
-    const width = canvas.clientWidth
-    const height = canvas.clientHeight
+    const width = canvas.clientWidth || canvas.parentElement?.clientWidth || 800
+    const height = canvas.clientHeight || canvas.parentElement?.clientHeight || 500
 
     camera.aspect = width / height
     camera.updateProjectionMatrix()
 
-    renderer.setSize(width, height)
+    renderer.setSize(width, height, false)
 }
 
 /**
@@ -489,6 +490,6 @@ function onWindowResize() {
 function animate() {
     requestAnimationFrame(animate)
 
-    controls.update()
-    renderer.render(scene, camera)
+    if (controls) controls.update()
+    if (renderer && scene && camera) renderer.render(scene, camera)
 }
