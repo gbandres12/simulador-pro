@@ -215,7 +215,7 @@ function createPorticoStructure(data: ProjectData) {
     createTercas(data, steelMaterial)
 
     // Contraventamento
-    createContraventamento(data, steelMaterial)
+    createContraventamento(data)
 }
 
 /**
@@ -323,7 +323,7 @@ function createTercas(data: ProjectData, material: THREE.Material) {
 /**
  * Cria contraventamento
  */
-function createContraventamento(data: ProjectData, material: THREE.Material) {
+function createContraventamento(data: ProjectData) {
     const { vao, comprimento, altura } = data
 
     // Contraventamento de cobertura
@@ -460,7 +460,7 @@ function setupViewerControls() {
     // Wireframe toggle
     document.getElementById('btn-wireframe')?.addEventListener('click', () => {
         wireframeMode = !wireframeMode
-        structureGroup.traverse((child) => {
+        structureGroup.traverse((child: THREE.Object3D) => {
             if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
                 child.material.wireframe = wireframeMode
             }
